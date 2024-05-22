@@ -91,6 +91,7 @@
     "build": "rollup -c",
     "prepublishOnly": "yarn build",
     "run-tests": "while ! nc -z localhost 8080 ; do sleep 1 ; done && yarn run start-cypress && npx nyc report --reporter=text-summary",
+		"postinstall": "yarn build",
     "postrun-tests": "kill $(lsof -t -i:8080)",
     "start-and-run-tests": "cross-env NODE_ENV=test yarn run build && yarn run serve-app && yarn run-tests",
     "serve-app": "cd ./cypress/react-testing-pages && yarn && yarn run start &",
